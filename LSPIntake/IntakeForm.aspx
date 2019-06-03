@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IntakeForm.aspx.cs" Inherits="LSPIntake.IntakeForm" MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="True" CodeBehind="IntakeForm.aspx.cs" Inherits="LSPIntake.IntakeForm" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 

@@ -5,8 +5,14 @@ body {
 
 p{
     margin: 0;
+    padding: 0;
 }
 
+.labels {
+    font-size: 12px;
+    color: #3B3B3B;
+    font-weight: 600;
+}
 
 h2 {
     font-weight: bold;
@@ -17,6 +23,22 @@ h2 {
     //text-transform: uppercase;
     font-family: 'Open Sans', sans-serif;
     //font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 1px;
+}
+
+h3 {
+    color: #99D347;
+    font-family: Bebas-Neue;
+    //border-radius: 3px;
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 0;
+    border-top: 1px solid #eaeaea;
 }
 
 /* Wrapping element */
@@ -38,7 +60,14 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="tel"],
-input[type="select"] {
+input[type="select"],
+input [type="drop-down"] {
+    width: 250px;
+    border: 1px solid #CBCBCB;
+    height: 40px;
+    border-radius: 3px;
+    padding: 12px;
+    margin: 2px 0 13px 0px;
     max-width: 280px;
 }
 
@@ -115,9 +144,10 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     
 }
 
-    .LanguageSelectButtons label:hover {
-        background-color: blue;
-    }
+
+.LanguageSelectButtons label:hover {
+    background-color: blue;
+}
 
 
 .LanguageSelectButtons input {

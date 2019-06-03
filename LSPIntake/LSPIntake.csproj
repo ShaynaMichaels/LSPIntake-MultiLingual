@@ -364,15 +364,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="AuthorizationClass.cs" />
     <Compile Include="Headings.cs" />
+    <Compile Include="IntakeForm.aspx.designer.cs">
+      <DependentUpon>IntakeForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MiscTexts.cs" />
     <Compile Include="Questions.cs" />
     <Compile Include="ClayInjectorClass.cs" />
     <Compile Include="IntakeForm.aspx.cs">
       <DependentUpon>IntakeForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="IntakeForm.aspx.designer.cs">
-      <DependentUpon>IntakeForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="DocUpload.cs" />
     <Compile Include="Global.asax.cs">
