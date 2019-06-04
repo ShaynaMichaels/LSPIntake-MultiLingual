@@ -26,11 +26,11 @@ namespace LSPIntake
                     Response.Redirect("LanguageSelect.aspx");
                 }
                //if nothing in querystring, return to login
-               if (string.IsNullOrEmpty(Request.QueryString["email"]) && string.IsNullOrEmpty(Request.QueryString["RandomID"]) && intDebug == 0)
-                {
-                    Response.Redirect("https://login2.nbn.org.il/Account/Claims?Application=LSP");
-                    //lblDebugtext.Text = "empty query string";
-                }
+               //else if (string.IsNullOrEmpty(Request.QueryString["email"]) && string.IsNullOrEmpty(Request.QueryString["RandomID"]) && intDebug == 0)
+               // {
+               //     Response.Redirect("https://login2.nbn.org.il/Account/Claims?Application=LSP");
+               //     //lblDebugtext.Text = "empty query string";
+               // }
                 ////if email and guid in querystring, proceed with sso login
                
                 //if email, RandomID, and nameidentifier in querystring, proceed with auth0 login
