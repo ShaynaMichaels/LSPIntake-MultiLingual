@@ -723,11 +723,13 @@ namespace LSPIntake
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            btnSubmit.Enabled = false;
             InjectClassFromControls();
             lblResponseText.Text = "Thank you!";
             IntakeFormHide();
             pnlDocumentUpload.Visible = true;
             PopulateUploadLinks();
+            
         }
 
         #endregion
@@ -919,72 +921,79 @@ namespace LSPIntake
 
         protected void InjectClassFromControls()
         {
-            Lonesoldier oLoneSoldier = new Lonesoldier();
-            oLoneSoldier._strNameIdentifier = (string)(Session["nameidentifier"]);
-            if (string.IsNullOrEmpty((string)(Session["guid"])) == false)
-            { oLoneSoldier._strSSOGuid = (string)(Session["guid"]); }
+            if (!string.IsNullOrEmpty((string)(Session["nameidentifier"])))
+            { 
+                Lonesoldier oLoneSoldier = new Lonesoldier();
+                oLoneSoldier._strNameIdentifier = (string)(Session["nameidentifier"]);
+                if (string.IsNullOrEmpty((string)(Session["guid"])) == false)
+                { oLoneSoldier._strSSOGuid = (string)(Session["guid"]); }
+                else
+                {
+                    oLoneSoldier._strSSOGuid = (string)(Session["nameidentifier"]);
+                }
+                oLoneSoldier._strFName = (txtFirstName.Text);
+                //oLoneSoldier._strMName = (txtMiddleName.Text);
+                oLoneSoldier._strLName = (txtLastName.Text);
+                oLoneSoldier._dtDOB = Convert.ToDateTime(txtBirthDate.Text);
+                oLoneSoldier._strGender = (ddlGender.SelectedValue);
+                oLoneSoldier._strMaritalStatus = (ddlMaritalStatus.Text);
+                oLoneSoldier._strEducation = (ddlEducation.Text);
+                //oLoneSoldier._strJewishAffiliation = (ddlJewishAffiliation.Text);
+                oLoneSoldier._strLanguage = (ddlLanguage.SelectedValue);
+                oLoneSoldier._strEmail = (txtEmail.Text);
+                oLoneSoldier._strOriginalCountry = (ddlOriginalCountry.SelectedValue);
+                oLoneSoldier._strCitizenship = CitizenshipString();
+                oLoneSoldier._strOriginalAddress = (txtOriginalAddress.Text);
+                oLoneSoldier._strOriginalState = (ddlOriginalState.SelectedValue);
+                oLoneSoldier._strOriginalCity = (ddlOriginalCity.SelectedValue);
+                oLoneSoldier._strZipCode = (txtZipCode.Text);
+                oLoneSoldier._strOriginalCell = (txtOriginalMobile.Text);
+                //oLoneSoldier._strOriginalHomePhone = (txtOriginalHomePhone.Text);
+                oLoneSoldier._strFathersNameEn = (txtFathersNameEng.Text);
+                oLoneSoldier._strMothersNameEn = (txtMothersNameEng.Text);
+                oLoneSoldier._strParentsPhone = (txtParentsPhone.Text);
+                oLoneSoldier._strParentsEmail = (txtParentsEmail.Text);
+                oLoneSoldier._strCurrentCountry = (ddlCurrentCountry.SelectedValue);
+                oLoneSoldier._strIsraelAddress = (txtIsraelAddress.Text);
+                oLoneSoldier._strIsraelCity = (ddlIsraelCity.SelectedValue);
+                oLoneSoldier._strIsraelCell = (txtIsraelMobile.Text);
+                oLoneSoldier._strTZNumber = (txtTZNumber.Text);
+                oLoneSoldier._strTZFirstNameHe = (txtTZFirstName.Text);
+                oLoneSoldier._strTZLastNameHe = (txtTZLastName.Text);
+                if (rblAliyah.SelectedValue == "Yes")
+                {
+                    oLoneSoldier._dtAliyahDate = Convert.ToDateTime(txtAliyahDate.Text);                
+                }
+                //oLoneSoldier._strCourseElite = rblCourseElite.SelectedValue;
+                if (rblEnlistmentDate.SelectedValue == "Yes")
+                {
+                    oLoneSoldier._dtEnlistmentDate = Convert.ToDateTime(txtEnlistmentDate.Text);
+                    oLoneSoldier._strLengthOfService = ddlLengthOfService.SelectedValue;
+                }
+                else
+                {
+                    oLoneSoldier._dtEnlistmentDate = Convert.ToDateTime("1899-12-30 00:00:00.000");
+                    oLoneSoldier._strLengthOfService = "";
+                }
+                if (rblMachal.SelectedValue == "Yes")
+                {
+                    oLoneSoldier._strMachalStatus = ddlMachalStatus.SelectedValue;
+                    oLoneSoldier._strMachalProgram = (ddlMachalProgram.SelectedValue);
+                }
+                if (rblCurrentlyServing.SelectedValue == "Yes")
+                {
+                    oLoneSoldier._strArmyId = (txtArmyId.Text);
+                    oLoneSoldier._strMachalId = (txtMachalId.Text);
+                    oLoneSoldier._strArmyUnit = (ddlArmyUnit.SelectedValue);
+                    oLoneSoldier._strRoleType = (ddlArmyTafkid.SelectedValue);
+                }
+                ClayInjectorClass ClayInjector = new ClayInjectorClass();
+                ClayInjector.CreateInjection(oLoneSoldier);
+            }
             else
             {
-                oLoneSoldier._strSSOGuid = (string)(Session["nameidentifier"]);
+                Response.Redirect("https://www.nbn.org.il/application-error/");
             }
-            oLoneSoldier._strFName = (txtFirstName.Text);
-            //oLoneSoldier._strMName = (txtMiddleName.Text);
-            oLoneSoldier._strLName = (txtLastName.Text);
-            oLoneSoldier._dtDOB = Convert.ToDateTime(txtBirthDate.Text);
-            oLoneSoldier._strGender = (ddlGender.SelectedValue);
-            oLoneSoldier._strMaritalStatus = (ddlMaritalStatus.Text);
-            oLoneSoldier._strEducation = (ddlEducation.Text);
-            //oLoneSoldier._strJewishAffiliation = (ddlJewishAffiliation.Text);
-            oLoneSoldier._strLanguage = (ddlLanguage.SelectedValue);
-            oLoneSoldier._strEmail = (txtEmail.Text);
-            oLoneSoldier._strOriginalCountry = (ddlOriginalCountry.SelectedValue);
-            oLoneSoldier._strCitizenship = CitizenshipString();
-            oLoneSoldier._strOriginalAddress = (txtOriginalAddress.Text);
-            oLoneSoldier._strOriginalState = (ddlOriginalState.SelectedValue);
-            oLoneSoldier._strOriginalCity = (ddlOriginalCity.SelectedValue);
-            oLoneSoldier._strZipCode = (txtZipCode.Text);
-            oLoneSoldier._strOriginalCell = (txtOriginalMobile.Text);
-            //oLoneSoldier._strOriginalHomePhone = (txtOriginalHomePhone.Text);
-            oLoneSoldier._strFathersNameEn = (txtFathersNameEng.Text);
-            oLoneSoldier._strMothersNameEn = (txtMothersNameEng.Text);
-            oLoneSoldier._strParentsPhone = (txtParentsPhone.Text);
-            oLoneSoldier._strParentsEmail = (txtParentsEmail.Text);
-            oLoneSoldier._strCurrentCountry = (ddlCurrentCountry.SelectedValue);
-            oLoneSoldier._strIsraelAddress = (txtIsraelAddress.Text);
-            oLoneSoldier._strIsraelCity = (ddlIsraelCity.SelectedValue);
-            oLoneSoldier._strIsraelCell = (txtIsraelMobile.Text);
-            oLoneSoldier._strTZNumber = (txtTZNumber.Text);
-            oLoneSoldier._strTZFirstNameHe = (txtTZFirstName.Text);
-            oLoneSoldier._strTZLastNameHe = (txtTZLastName.Text);
-            if (rblAliyah.SelectedValue == "Yes")
-            {
-                oLoneSoldier._dtAliyahDate = Convert.ToDateTime(txtAliyahDate.Text);                
-            }
-            //oLoneSoldier._strCourseElite = rblCourseElite.SelectedValue;
-            if (rblEnlistmentDate.SelectedValue == "Yes")
-            {
-                oLoneSoldier._dtEnlistmentDate = Convert.ToDateTime(txtEnlistmentDate.Text);
-                oLoneSoldier._strLengthOfService = ddlLengthOfService.SelectedValue;
-            }
-            else
-            {
-                oLoneSoldier._dtEnlistmentDate = Convert.ToDateTime("1899-12-30 00:00:00.000");
-                oLoneSoldier._strLengthOfService = "";
-            }
-            if (rblMachal.SelectedValue == "Yes")
-            {
-                oLoneSoldier._strMachalStatus = ddlMachalStatus.SelectedValue;
-                oLoneSoldier._strMachalProgram = (ddlMachalProgram.SelectedValue);
-            }
-            if (rblCurrentlyServing.SelectedValue == "Yes")
-            {
-                oLoneSoldier._strArmyId = (txtArmyId.Text);
-                oLoneSoldier._strMachalId = (txtMachalId.Text);
-                oLoneSoldier._strArmyUnit = (ddlArmyUnit.SelectedValue);
-                oLoneSoldier._strRoleType = (ddlArmyTafkid.SelectedValue);
-            }
-            ClayInjectorClass ClayInjector = new ClayInjectorClass();
-            ClayInjector.CreateInjection(oLoneSoldier);
 
         }
 

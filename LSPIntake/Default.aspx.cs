@@ -16,7 +16,7 @@ namespace LSPIntake
         {
             if (!(IsPostBack))
             {
-                int intDebug = 1;
+                int intDebug = 0;
                 if (intDebug == 1)
                 {
                     Session["Debug"] = 1;
@@ -25,14 +25,13 @@ namespace LSPIntake
                     Session["guid"] = "google-oauth2|117708636609462028155";
                     Response.Redirect("LanguageSelect.aspx");
                 }
-               //if nothing in querystring, return to login
-               //else if (string.IsNullOrEmpty(Request.QueryString["email"]) && string.IsNullOrEmpty(Request.QueryString["RandomID"]) && intDebug == 0)
-               // {
-               //     Response.Redirect("https://login2.nbn.org.il/Account/Claims?Application=LSP");
-               //     //lblDebugtext.Text = "empty query string";
-               // }
-                ////if email and guid in querystring, proceed with sso login
-               
+                //if nothing in querystring, return to login
+                if (string.IsNullOrEmpty(Request.QueryString["email"]) && string.IsNullOrEmpty(Request.QueryString["RandomID"]) && intDebug == 0)
+                {
+                    Response.Redirect("https://login2.nbn.org.il/Account/Claims?Application=LSP");
+                    //lblDebugtext.Text = "empty query string";
+                }
+
                 //if email, RandomID, and nameidentifier in querystring, proceed with auth0 login
                 else if (string.IsNullOrEmpty(Request.QueryString["email"]) == false && string.IsNullOrEmpty(Request.QueryString["RandomID"]) == false && string.IsNullOrEmpty(Request.QueryString["nameidentifier"]) == false)
                 {
