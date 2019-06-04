@@ -16,7 +16,7 @@ namespace LSPIntake
         {
             if (!(IsPostBack))
             {
-                int intDebug = 1;
+                int intDebug = 0;
                 if (intDebug == 1)
                 {
                     Session["Debug"] = 1;

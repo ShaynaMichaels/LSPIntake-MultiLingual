@@ -14,6 +14,7 @@ p{
     font-weight: 600;
 }
 
+
 h2 {
     font-weight: bold;
     font-size: 25px;
@@ -55,21 +56,46 @@ hr {
     white-space: normal;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
+
+/* Set widths on the form inputs since otherwise they're 100% wide*/
 input[type="text"],
-input[type="password"],
+/*input[type="password"],
 input[type="email"],
 input[type="tel"],
-input[type="select"],
-input [type="drop-down"] {
+input[type="select"],*/
+.dropdown, .datepicker {
     width: 250px;
     border: 1px solid #CBCBCB;
     height: 40px;
     border-radius: 3px;
-    padding: 12px;
+    padding: 0px 12px; /*need the 0px first so bottoms of letters aren't cut off*/
     margin: 2px 0 13px 0px;
     max-width: 280px;
+    line-height: normal;
 }
+
+.datepicker {
+    padding: 12px;
+    padding-right: 0px; /*so arrows for datepicker aren't in a weird spot*/
+}
+
+/*.radiobuttons input {
+    visibility: hidden;
+}
+.radiobuttons {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid darkgray;
+    border-radius: 50%;
+    outline: none;
+    box-shadow: 0 0 5px 0px gray inset;
+    /*display: inline-block;
+    content: ' \25CF';*/
+}*/
+
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

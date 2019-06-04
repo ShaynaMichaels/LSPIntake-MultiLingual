@@ -43,12 +43,11 @@
             <asp:RequiredFieldValidator ID="vldtrLastNameRequired" runat="server" ErrorMessage="Last Name is Required" ControlToValidate="txtLastName" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
             <asp:RegularExpressionValidator ID="vldtrLastNameRegex" runat="server" ErrorMessage="Invalid Last Name" ValidationExpression="^[a-zA-Z ]+$" ControlToValidate="txtLastName" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
         </p>
-
         <p>
             <asp:Label ID="lblQ4DateofBirth" runat="server"></asp:Label>
         </p>
         <p>
-            <asp:TextBox ID="txtBirthDate" TextMode="Date" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtBirthDate" CssClass="datepicker" TextMode="Date" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="vldtrDOBRequired" runat="server" ControlToValidate="txtBirthDate" ErrorMessage="Birthdate is Required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
         </p>
         <p>
@@ -56,7 +55,7 @@
         </p>
         <%--<asp:RadioButtonList ID="rblAliyah" RepeatDirection="Horizontal" runat="server" CellPadding="10" OnSelectedIndexChanged="rblAliyah_SelectedIndexChanged" AutoPostBack="True" DataSourceID="datasrcYesNo" DataTextField="Text" DataValueField="Value">
                 </asp:RadioButtonList>--%>
-        <asp:RadioButtonList ID="ddlGender" RepeatDirection="Horizontal" runat="server" CellPadding="10" DataSourceID="datasrcDdlGender" DataTextField="Text" DataValueField="Value"></asp:RadioButtonList>
+        <asp:RadioButtonList ID="ddlGender" CssClass="radiobuttons" RepeatDirection="Horizontal" runat="server" CellPadding="10" DataSourceID="datasrcDdlGender" DataTextField="Text" DataValueField="Value"></asp:RadioButtonList>
          <asp:SqlDataSource ID="datasrcDdlGender" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prLSPDropDownTextsGet" SelectCommandType="StoredProcedure">
                 <SelectParameters>
                     <asp:Parameter DefaultValue="8" Name="DropdownId" Type="Int32" />
@@ -68,7 +67,7 @@
             <asp:Label ID="lblQ6Maritalstatus" runat="server"></asp:Label>
         </p>
         <p>
-            <asp:DropDownList ID="ddlMaritalStatus" runat="server" DataSourceID="dataSrcDdlMaritalStatus" DataTextField="Text" DataValueField="Value">
+            <asp:DropDownList id="ddlMaritalStatus" CssClass="dropdown" runat="server" DataSourceID="dataSrcDdlMaritalStatus" DataTextField="Text" DataValueField="Value">
             </asp:DropDownList>
             <asp:SqlDataSource ID="dataSrcDdlMaritalStatus" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prLSPDropDownTextsGet" SelectCommandType="StoredProcedure">
                 <SelectParameters>
@@ -82,7 +81,7 @@
             <asp:Label ID="lblQ7Education" runat="server"></asp:Label>
         </p>
         <p>
-            <asp:DropDownList ID="ddlEducation" runat="server" DataSourceID="dataSrcEducation" DataTextField="Text" DataValueField="Value" AutoPostBack="false">
+            <asp:DropDownList ID="ddlEducation" CssClass="dropdown" runat="server" DataSourceID="dataSrcEducation" DataTextField="Text" DataValueField="Value" AutoPostBack="false">
             </asp:DropDownList>
             <asp:RequiredFieldValidator ID="vldtrEducationRequired" runat="server" InitialValue="-Select-" ErrorMessage="Education is Required" ControlToValidate="ddlEducation" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
             <asp:SqlDataSource ID="dataSrcEducation" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prLSPDropDownTextsGet" SelectCommandType="StoredProcedure">
@@ -96,7 +95,7 @@
             <asp:Label ID="lblQ8JewishAffiliation" runat="server"></asp:Label>
         </p>
         <p>
-            <asp:DropDownList ID="ddlJewishAffiliation" runat="server" DataSourceID="dataSrcAffiliation" DataTextField="Text" DataValueField="Value" AutoPostBack="false">
+            <asp:DropDownList ID="ddlJewishAffiliation" CssClass="dropdown" runat="server" DataSourceID="dataSrcAffiliation" DataTextField="Text" DataValueField="Value" AutoPostBack="false">
             </asp:DropDownList>
             <asp:RequiredFieldValidator ID="vldtrAffiliationRequired" runat="server" InitialValue="-Select-" ErrorMessage="Jewish Affiliation is Required" ControlToValidate="ddlJewishAffiliation" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
             <asp:SqlDataSource ID="dataSrcAffiliation" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prLSPDropDownTextsGet" SelectCommandType="StoredProcedure">
@@ -110,7 +109,7 @@
             <asp:Label ID="lblQ9PreferredLanguage" runat="server"></asp:Label>
         </p>
         <p>
-            <asp:DropDownList ID="ddlLanguage" runat="server" DataSourceID="dataSrcLanguage" DataTextField="LanguageDisplayName" DataValueField="Language" AutoPostBack="false">
+            <asp:DropDownList ID="ddlLanguage" CssClass="dropdown" runat="server" DataSourceID="dataSrcLanguage" DataTextField="LanguageDisplayName" DataValueField="Language" AutoPostBack="false">
             </asp:DropDownList>
             <asp:RequiredFieldValidator ID="vldtrLanguageRequired" runat="server" InitialValue="-Select-" ErrorMessage="Preferred language is Required" ControlToValidate="ddlLanguage" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
             <asp:SqlDataSource ID="dataSrcLanguage" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="SELECT [Language], [LanguageDisplayName] FROM [Languages]"></asp:SqlDataSource>
@@ -137,7 +136,7 @@
                     <asp:Label ID="lblQ12OriginalCountry" runat="server"></asp:Label>
                 </p>
                 <p>
-                    <asp:DropDownList ID="ddlOriginalCountry" runat="server" DataSourceID="SqlDataSource3" DataTextField="Country" DataValueField="Country" AutoPostBack="true" OnSelectedIndexChanged="ddlOriginalCountry_SelectedIndexChanged">
+                    <asp:DropDownList ID="ddlOriginalCountry" CssClass="dropdown" runat="server" DataSourceID="SqlDataSource3" DataTextField="Country" DataValueField="Country" AutoPostBack="true" OnSelectedIndexChanged="ddlOriginalCountry_SelectedIndexChanged">
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prCountryStateCityGet" SelectCommandType="StoredProcedure">
                         <SelectParameters>
@@ -161,7 +160,7 @@
                         <asp:Label ID="lblOriginalState" runat="server" Text=""></asp:Label>
                     </p>
                     <p>
-                        <asp:DropDownList ID="ddlOriginalState" runat="server" DataTextField="State" DataValueField="State" AutoPostBack="true" OnSelectedIndexChanged="ddlOriginalState_SelectedIndexChanged">
+                        <asp:DropDownList ID="ddlOriginalState" CssClass="dropdown" runat="server" DataTextField="State" DataValueField="State" AutoPostBack="true" OnSelectedIndexChanged="ddlOriginalState_SelectedIndexChanged">
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="vldtrOriginalStateRequired" runat="server" InitialValue="-Select-" ErrorMessage="Required" ForeColor="Red" Display="Dynamic" ControlToValidate="ddlOriginalState"></asp:RequiredFieldValidator>
                         <asp:SqlDataSource ID="SqlDataSourceOriginalState" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prCountryStateCityGet" SelectCommandType="StoredProcedure">
@@ -177,7 +176,7 @@
                         <asp:Label ID="lblQ16OriginalCity" runat="server"></asp:Label>
                     </p>
                     <p>
-                        <asp:DropDownList ID="ddlOriginalCity" runat="server" DataTextField="City" DataValueField="City" AutoPostBack="true" OnSelectedIndexChanged="ddlOriginalCity_SelectedIndexChanged">
+                        <asp:DropDownList ID="ddlOriginalCity" CssClass="dropdown" runat="server" DataTextField="City" DataValueField="City" AutoPostBack="true" OnSelectedIndexChanged="ddlOriginalCity_SelectedIndexChanged">
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="vldtrOriginalCityRequired" runat="server" InitialValue="-Select-" ErrorMessage="Original City is Required" ForeColor="Red" Display="Dynamic" ControlToValidate="ddlOriginalCity"></asp:RequiredFieldValidator>
                         <asp:SqlDataSource ID="SqlDataSourceOriginalCity" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prCountryStateCityGet" SelectCommandType="StoredProcedure">
@@ -260,7 +259,7 @@
                     <asp:Label ID="lblQ24Whatcountrydoyouliveintoday" runat="server"></asp:Label>
                 </p>
                 <p>
-                    <asp:DropDownList ID="ddlCurrentCountry" runat="server" DataSourceID="SqlDataSource1" DataTextField="Country" DataValueField="Country" OnSelectedIndexChanged="ddlCurrentCountry_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlCurrentCountry" CssClass="dropdown" runat="server" DataSourceID="SqlDataSource1" DataTextField="Country" DataValueField="Country" OnSelectedIndexChanged="ddlCurrentCountry_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                     <asp:RequiredFieldValidator ID="vldtrCurrentCountryRequired" runat="server" InitialValue="-Select-" ErrorMessage="Country of residence is Required" ControlToValidate="ddlCurrentCountry" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prCountryStateCityGet" SelectCommandType="StoredProcedure">
                         <SelectParameters>
@@ -280,7 +279,7 @@
                         <asp:Label ID="lblQ26IsraelCity" runat="server"></asp:Label>
                     </p>    
                     <p>
-                        <asp:DropDownList ID="ddlIsraelCity" runat="server" DataSourceID="SqlDataSourceIsraelCity" DataTextField="City" DataValueField="City">
+                        <asp:DropDownList ID="ddlIsraelCity" CssClass="dropdown" runat="server" DataSourceID="SqlDataSourceIsraelCity" DataTextField="City" DataValueField="City">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSourceIsraelCity" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prCountryStateCityGet" SelectCommandType="StoredProcedure">
                             <SelectParameters>
@@ -302,7 +301,7 @@
                 <p>
                     <asp:Label ID="lblQ29DidyoumakeAliyah" runat="server"></asp:Label>
                 </p>
-                <asp:RadioButtonList ID="rblAliyah" RepeatDirection="Horizontal" runat="server" CellPadding="10" OnSelectedIndexChanged="rblAliyah_SelectedIndexChanged" AutoPostBack="True" DataSourceID="datasrcYesNo" DataTextField="Text" DataValueField="Value">
+                <asp:RadioButtonList ID="rblAliyah" CssClass="radiobuttons" RepeatDirection="Horizontal" runat="server" CellPadding="10" OnSelectedIndexChanged="rblAliyah_SelectedIndexChanged" AutoPostBack="True" DataSourceID="datasrcYesNo" DataTextField="Text" DataValueField="Value">
                 </asp:RadioButtonList>
                 <asp:SqlDataSource ID="datasrcYesNo" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prLSPDropDownTextsGet" SelectCommandType="StoredProcedure">
                     <SelectParameters>
@@ -316,14 +315,14 @@
                         <asp:Label ID="lblQ34DateofAliyah" runat="server"></asp:Label>
                     </p>
                     <p>
-                        <asp:TextBox ID="txtAliyahDate" TextMode="Date" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAliyahDate" class ="datepicker" TextMode="Date" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="vldtrAliyahDateRequired" runat="server" ControlToValidate="txtAliyahDate" ErrorMessage="Aliyah Date is Required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                     </p>
                 </asp:Panel>
                 <p>
                     <asp:Label ID="lblQ30DoyouhaveanisraeliIDnumber" runat="server"></asp:Label>
                 </p>
-                <asp:RadioButtonList ID="rblTZ" runat="server" CellPadding="10" RepeatDirection="Horizontal" AutoPostBack="true" OnSelectedIndexChanged="rblTZ_SelectedIndexChanged" DataSourceID="datasrcYesNo" DataTextField="Text" DataValueField="Value">
+                <asp:RadioButtonList ID="rblTZ" CssClass="radiobuttons" runat="server" CellPadding="10" RepeatDirection="Horizontal" AutoPostBack="true" OnSelectedIndexChanged="rblTZ_SelectedIndexChanged" DataSourceID="datasrcYesNo" DataTextField="Text" DataValueField="Value">
                 </asp:RadioButtonList>
                 <asp:RequiredFieldValidator ID="vldtrTZOptionRequired" runat="server" ControlToValidate="rblTZ" ErrorMessage="Please select an Israeli Id option" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                 <asp:Panel ID="pnlTeudatZehut" runat="server" Visible="false">
@@ -366,7 +365,7 @@
                     <asp:Label ID="lblQ49EnlistmentDate" runat="server"></asp:Label>
                 </p>
                 <p>
-                    <asp:RadioButtonList ID="rblEnlistmentDate" runat="server" CellPadding="10" RepeatDirection="Horizontal" Width="116px" AutoPostBack="true" OnSelectedIndexChanged="rblEnlistmentDate_SelectedIndexChanged" DataSourceID="datasrcYesNo" DataTextField="Text" DataValueField="Value">
+                    <asp:RadioButtonList ID="rblEnlistmentDate" CssClass="radiobuttons" runat="server" CellPadding="10" RepeatDirection="Horizontal" Width="116px" AutoPostBack="true" OnSelectedIndexChanged="rblEnlistmentDate_SelectedIndexChanged" DataSourceID="datasrcYesNo" DataTextField="Text" DataValueField="Value">
                     </asp:RadioButtonList>
                     <asp:RequiredFieldValidator ID="vldtrEnlistmentRequired" runat="server" ControlToValidate="rblEnlistmentDate" ErrorMessage="Please select an Enlistment Date option" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                 </p>
@@ -375,14 +374,14 @@
                         <asp:Label ID="lblQ41EnlistmentDate" runat="server"></asp:Label>
                     </p>
                     <p>
-                        <asp:TextBox ID="txtEnlistmentDate" TextMode="Date" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtEnlistmentDate" CssClass="datepicker" TextMode="Date" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="vldtrEnlistmentDateRequired" runat="server" ErrorMessage="Enlistment date is required" ControlToValidate="txtEnlistmentDate" Enabled="false" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                     </p>
                     <p>
                         <asp:Label ID="lblQ42LengthOfService" runat="server"></asp:Label>
                     </p>
                     <p>
-                        <asp:DropDownList ID="ddlLengthOfService" runat="server" DataSourceID="datasrcLengthOfService" DataTextField="Val" DataValueField="Val"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlLengthOfService" CssClass="dropdown" runat="server" DataSourceID="datasrcLengthOfService" DataTextField="Val" DataValueField="Val"></asp:DropDownList>
                         <asp:SqlDataSource ID="datasrcLengthOfService" runat="server" ConnectionString="<%$ ConnectionStrings:ClayConnectionString %>" SelectCommand="SELECT Val FROM DCDB..LookupLists WHERE ItemType = 1 and FieldConst = 552"></asp:SqlDataSource>
                         <asp:RequiredFieldValidator ID="vldtrLengthOfServiceRequired" runat="server" ErrorMessage="Length of Service is required" ControlToValidate="ddlLengthOfService" Enabled="false" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                     </p>
@@ -390,7 +389,7 @@
                 <asp:Panel ID="pnlMachalOption" runat="server" Visible="false">
                 <p>Are you planning to join/part of Machal?</p>
                 <p>
-                    <asp:RadioButtonList ID="rblMachal" runat="server" CellPadding="10" RepeatDirection="Horizontal" Width="116px" OnSelectedIndexChanged="rblMachal_SelectedIndexChanged" AutoPostBack="true" DataSourceID="datasrcYesNo" DataTextField="Text" DataValueField="Value">
+                    <asp:RadioButtonList ID="rblMachal" CssClass="radiobuttons" runat="server" CellPadding="10" RepeatDirection="Horizontal" Width="116px" OnSelectedIndexChanged="rblMachal_SelectedIndexChanged" AutoPostBack="true" DataSourceID="datasrcYesNo" DataTextField="Text" DataValueField="Value">
                     </asp:RadioButtonList>
                     <asp:RequiredFieldValidator ID="vldtrMachalOptionRequired" runat="server" ControlToValidate="rblMachal" ErrorMessage="Please select a Machal option" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                 </p>
@@ -400,7 +399,7 @@
                         <asp:Label ID="lblQ37MachalStatus" runat="server"></asp:Label>
                     </p>
                     <p>
-                        <asp:DropDownList ID="ddlMachalStatus" runat="server" Width="116px" DataSourceID="SqlDataSourceMachalStatus" DataTextField="Text" DataValueField="Value">
+                        <asp:DropDownList ID="ddlMachalStatus" CssClass="dropdown" runat="server" Width="116px" DataSourceID="SqlDataSourceMachalStatus" DataTextField="Text" DataValueField="Value">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSourceMachalStatus" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prLSPDropDownTextsGet" SelectCommandType="StoredProcedure">
                             <SelectParameters>
@@ -414,7 +413,7 @@
                         <asp:Label ID="lblQ38Whichprogramdidyouapplyto" runat="server"></asp:Label>
                     </p>
                     <p>
-                        <asp:DropDownList ID="ddlMachalProgram" runat="server" DataSourceID="SqlDataSourceMachalProgram" DataTextField="Text" DataValueField="Value">
+                        <asp:DropDownList ID="ddlMachalProgram" class="dropdown" runat="server" DataSourceID="SqlDataSourceMachalProgram" DataTextField="Text" DataValueField="Value">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSourceMachalProgram" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prLSPDropDownTextsGet" SelectCommandType="StoredProcedure">
                             <SelectParameters>
@@ -437,7 +436,7 @@
                     <asp:Label ID="lblQ36AreyoucurrentlyservingintheIDF" runat="server"></asp:Label>
                 </p>
                 <p>
-                    <asp:RadioButtonList ID="rblCurrentlyServing" runat="server" CellPadding="10" RepeatDirection="Horizontal" Width="116px" AutoPostBack="true" OnSelectedIndexChanged="rblCurrentlyServing_SelectedIndexChanged" DataSourceID="datasrcYesNo" DataTextField="Text" DataValueField="Value">
+                    <asp:RadioButtonList ID="rblCurrentlyServing" class="radiobuttons" runat="server" CellPadding="10" RepeatDirection="Horizontal" Width="116px" AutoPostBack="true" OnSelectedIndexChanged="rblCurrentlyServing_SelectedIndexChanged" DataSourceID="datasrcYesNo" DataTextField="Text" DataValueField="Value">
                     </asp:RadioButtonList>
                     <asp:RequiredFieldValidator ID="vldtrCurrentlyServingRequired" runat="server" ControlToValidate="rblCurrentlyServing" ErrorMessage="Please select an Army Service option" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                 </p>
@@ -453,7 +452,7 @@
                         <asp:Label ID="lblQ43ArmyUnit" runat="server"></asp:Label>
                     </p>
                     <p>
-                        <asp:DropDownList ID="ddlArmyUnit" runat="server" DataSourceID="SqlDataSource7" DataTextField="ArmyUnit" DataValueField="ArmyUnit">
+                        <asp:DropDownList ID="ddlArmyUnit" CssClass="dropdown" runat="server" DataSourceID="SqlDataSource7" DataTextField="ArmyUnit" DataValueField="ArmyUnit">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:ClayConnectionString %>" SelectCommand="select Val as [ArmyUnit] from LookupLists where ItemType = 1 and FieldConst = 165 order by Position"></asp:SqlDataSource>
                     </p>
@@ -461,7 +460,7 @@
                         <asp:Label ID="lblQ44roleType" runat="server"></asp:Label>
                     </p>
                     <p>
-                        <asp:DropDownList ID="ddlArmyTafkid" runat="server" DataSourceID="SqlDataSource8" DataTextField="ArmyTafkid" DataValueField="ArmyTafkid">
+                        <asp:DropDownList ID="ddlArmyTafkid" CssClass="dropdown" runat="server" DataSourceID="SqlDataSource8" DataTextField="ArmyTafkid" DataValueField="ArmyTafkid">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:ClayConnectionString %>" SelectCommand="select Val as [ArmyTafkid] from LookupLists where ItemType = 241 and FieldConst = 215 order by Position"></asp:SqlDataSource>
                     </p>
@@ -476,7 +475,7 @@
             <asp:TextBox ID="txtDisclaimer" runat="server" TextMode="MultiLine" Width="500px" Rows="6" ReadOnly="true"></asp:TextBox>
         </p>
         <p>
-            <asp:RadioButtonList ID="rblAccept" runat="server">
+            <asp:RadioButtonList ID="rblAccept" CssClass="radiobuttons" runat="server">
             </asp:RadioButtonList>
 
         </p>

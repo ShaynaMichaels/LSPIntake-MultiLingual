@@ -266,9 +266,9 @@ namespace LSPIntake
             ddlArmyTafkid.DataBind();
             ddlArmyTafkid.Items.Insert(0, "-"+ oMiscTexts._strText + "-");
 
-            ddlGender.DataBind();
-            ddlGender.Items.Insert(0, "-" + oMiscTexts._strText + "-");
-            vldtrGenderRequired.InitialValue = "-" + oMiscTexts._strText + "-";
+            //ddlGender.DataBind();
+            //ddlGender.Items.Insert(0, "-" + oMiscTexts._strText + "-");
+            //vldtrGenderRequired.InitialValue = "-" + oMiscTexts._strText + "-";
 
             ddlEducation.DataBind();
             ddlEducation.Items.Insert(0, "-"+ oMiscTexts._strText + "-");
