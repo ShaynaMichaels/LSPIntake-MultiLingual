@@ -51,15 +51,17 @@ namespace LSPIntake
                     }
                     else
                     {
+                        //lblDebugtext.Text = "auth0 login, authorized = " + Convert.ToString(oAuthorization._intIsAuthorized);
                         Response.Redirect("https://www.nbn.org.il/application-error/");
                     }
                    
-                    lblDebugtext.Text = "auth0 login, authorized = " + Convert.ToString(oAuthorization._intIsAuthorized);
+                    
 
                 }
 
                 else
                 {
+
                     Response.Redirect("https://www.nbn.org.il/application-error/");
                     //lblDebugtext.Text = "RandomId from QueryString = " + Request.QueryString["RandomId"] + " RandomId from database = " + gvAuthInfo.Rows[0].Cells[1].Text;
                 }

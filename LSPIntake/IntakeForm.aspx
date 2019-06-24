@@ -55,13 +55,14 @@
         </p>
         <%--<asp:RadioButtonList ID="rblAliyah" RepeatDirection="Horizontal" runat="server" CellPadding="10" OnSelectedIndexChanged="rblAliyah_SelectedIndexChanged" AutoPostBack="True" DataSourceID="datasrcYesNo" DataTextField="Text" DataValueField="Value">
                 </asp:RadioButtonList>--%>
-        <asp:RadioButtonList ID="ddlGender" CssClass="radiobuttons" RepeatDirection="Horizontal" runat="server" CellPadding="10" DataSourceID="datasrcDdlGender" DataTextField="Text" DataValueField="Value"></asp:RadioButtonList>
+        <asp:DropDownList ID="ddlGender" CssClass="dropdown" RepeatDirection="Horizontal" runat="server" CellPadding="10" DataSourceID="datasrcDdlGender" DataTextField="Text" DataValueField="Value"></asp:DropDownList>
          <asp:SqlDataSource ID="datasrcDdlGender" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prLSPDropDownTextsGet" SelectCommandType="StoredProcedure">
                 <SelectParameters>
                     <asp:Parameter DefaultValue="8" Name="DropdownId" Type="Int32" />
                     <asp:SessionParameter DefaultValue="1" Name="LanguageId" SessionField="language" Type="Int32" />
                 </SelectParameters>
             </asp:SqlDataSource>
+        <%--< ddlGender.Items.FindByText("M").Selected = true;>--%>
         <asp:RequiredFieldValidator ID="vldtrGenderRequired" runat="server" ErrorMessage="Gender is Required" ControlToValidate="ddlGender" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
         <p>
             <asp:Label ID="lblQ6Maritalstatus" runat="server"></asp:Label>
@@ -484,7 +485,8 @@
 
     <asp:Panel ID="pnlSubmit" runat="server">
         <p>
-            <asp:Button ID="btnSubmit" runat="server" Text="Sign Up" OnClick="btnSubmit_Click" />
+           <asp:Button ID="btnSubmit" runat="server" Text="Sign Up" OnClick="btnSubmit_Click" />
+
         </p>
         <p>
             <asp:Label ID="lblResponseText" runat="server" Text=""></asp:Label>

@@ -266,9 +266,9 @@ namespace LSPIntake
             ddlArmyTafkid.DataBind();
             ddlArmyTafkid.Items.Insert(0, "-"+ oMiscTexts._strText + "-");
 
-            //ddlGender.DataBind();
-            //ddlGender.Items.Insert(0, "-" + oMiscTexts._strText + "-");
-            //vldtrGenderRequired.InitialValue = "-" + oMiscTexts._strText + "-";
+            ddlGender.DataBind();
+            ddlGender.Items.Insert(0, "-" + oMiscTexts._strText + "-");
+            vldtrGenderRequired.InitialValue = "-" + oMiscTexts._strText + "-";
 
             ddlEducation.DataBind();
             ddlEducation.Items.Insert(0, "-"+ oMiscTexts._strText + "-");
@@ -766,6 +766,30 @@ namespace LSPIntake
             return strCitizenship;
         }
 
+        protected void PopulateDDL(DropDownList control, string value)
+        {
+            if (!string.IsNullOrEmpty(value))
+                control.ClearSelection();
+            else
+                control.SelectedValue = value;
+        }
+
+        //to use for validation - not yet implemented. Tried a generic method below that didn't work
+        protected void PopulateRB(RadioButtonList control, string value)
+        {
+            if (!string.IsNullOrEmpty(value))
+                control.ClearSelection();
+            else
+                control.SelectedValue = value;
+        }
+
+        //protected void PopulateGeneric <T> (T control, string value)
+        //{
+        //    if (!string.IsNullOrEmpty(value))
+        //        control.ClearSelection();
+        //    else
+        //        control.SelectedValue = value;
+        //}
         protected void PopulateControlsFromDatabase()
         {
             MiscTexts oMiscTexts = new MiscTexts();
@@ -921,6 +945,7 @@ namespace LSPIntake
 
         protected void InjectClassFromControls()
         {
+
             if (!string.IsNullOrEmpty((string)(Session["nameidentifier"])))
             { 
                 Lonesoldier oLoneSoldier = new Lonesoldier();
