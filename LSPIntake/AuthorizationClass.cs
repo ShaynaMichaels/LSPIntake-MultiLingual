@@ -10,7 +10,7 @@ namespace LSPIntake
 {
     public class AuthorizationClass
     {
-
+        //testing
         public string _strRandomId { get; set; }
         public string _strEmail { get; set; }
         public string _strNameIdentifier { get; set; }
