@@ -13,6 +13,14 @@
         runat="server"
         ForeColor="Red" />
     <asp:Label ID="lblDebugText" runat="server" Text=""></asp:Label>
+        <br />
+    <asp:GridView ID="gvAllLabelText" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceOriginalState">
+        <Columns>
+            <asp:BoundField DataField="Country" HeaderText="Country" SortExpression="Country" />
+            <asp:BoundField DataField="Sort" HeaderText="Sort" ReadOnly="True" SortExpression="Sort" />
+        </Columns>
+        </asp:GridView>
+        <br />
     <asp:Panel ID="pnlPersonalDetails" runat="server">
         <h2>
             <asp:Label ID="lblHeadingPersonalDetails" runat="server" Text="Label"></asp:Label></h2>
@@ -167,7 +175,9 @@
                         <asp:SqlDataSource ID="SqlDataSourceOriginalState" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" SelectCommand="prCountryStateCityGet" SelectCommandType="StoredProcedure">
                             <SelectParameters>
                                 <asp:Parameter DefaultValue="2" Name="SearchType" Type="Int32" />
-                                <asp:ControlParameter ControlID="ddlOriginalCountry" DefaultValue="" Name="Country" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="ddlOriginalCountry" DefaultValue="USA" Name="Country" PropertyName="SelectedValue" Type="String" />
+                                <asp:Parameter Name="State" Type="String" />
+                                <asp:Parameter Name="City" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                     </p>
